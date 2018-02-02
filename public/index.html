@@ -1,30 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-<h1>Hello Firebase</h1>
+  <div class="container">
+    <header>
+      <div class="jumbotron">
+        <h1>Sundre skola</h1>
+      </div>
+      <nav class="navbar navbar-expand-sm bg-light">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <button class="btn btn-info btn-sm">Boka</button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-info btn-sm">Ingår</button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-info btn-sm">Hitta hit</button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-info btn-sm">Historia</button>
+            </li>
+          </ul>
+        </nav>
+    </header>
+    <section>
+      <article id="content"></article>
+    </section>
+    <footer>
 
-<script>
-</script>
-
-
-<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCy-hfqqHNnyiWWplbVXE6wGZfQp31_t4E",
-    authDomain: "sundreskola-4a027.firebaseapp.com",
-    databaseURL: "https://sundreskola-4a027.firebaseio.com",
-    projectId: "sundreskola-4a027",
-    storageBucket: "",
-    messagingSenderId: "384957736409"
-  };
-  firebase.initializeApp(config);
-</script>
+    </footer>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCy-hfqqHNnyiWWplbVXE6wGZfQp31_t4E",
+      authDomain: "sundreskola-4a027.firebaseapp.com",
+      databaseURL: "https://sundreskola-4a027.firebaseio.com",
+      projectId: "sundreskola-4a027",
+      storageBucket: "",
+      messagingSenderId: "384957736409"
+    };
+    firebase.initializeApp(config);
+  </script>
+  
 </body>
+
 </html>
