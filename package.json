@@ -9,6 +9,7 @@
   "author": "Andreas Blom, Samuel Bering",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "jquery-weekpicker": "^1.0.4"
   }
 }
