@@ -1,4 +1,4 @@
-class BookingManager {
+module.exports = class BookingManager {
     constructor(database) {
         this.database = database;
     }
@@ -32,7 +32,7 @@ class BookingManager {
 
             bookings.forEach(function (booking) {
                 console.log(booking.key + " : " + booking.val());
-                let b= booking.val();
+                let b = booking.val();
                 unavailableDates.push(...b.dates);
             });
 
@@ -62,6 +62,9 @@ class Booking {
         this.bookingDate = bookingDate;
     }
 }
+
+
+
 
 
 

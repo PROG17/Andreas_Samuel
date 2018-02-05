@@ -7,11 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="index.css"/>
+  <link rel="stylesheet" href="index.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="manageBookings.js"></script>
 </head>
 
 <body>
@@ -21,21 +20,21 @@
         <h1>Sundre skola</h1>
       </div>
       <nav class="navbar navbar-expand-sm bg-light">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <button id="bookingBtn" class="btn btn-info btn-sm">Boka</button>
-            </li>
-            <li class="nav-item">
-              <button id="includesBtn" class="btn btn-info btn-sm">Ingår</button>
-            </li>
-            <li class="nav-item">
-              <button id="findUsBtn" class="btn btn-info btn-sm">Hitta hit</button>
-            </li>
-            <li class="nav-item">
-              <button id="historyBtn" class="btn btn-info btn-sm">Historia</button>
-            </li>
-          </ul>
-        </nav>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <button id="bookingBtn" class="btn btn-info btn-sm">Boka</button>
+          </li>
+          <li class="nav-item">
+            <button id="includesBtn" class="btn btn-info btn-sm">Ingår</button>
+          </li>
+          <li class="nav-item">
+            <button id="findUsBtn" class="btn btn-info btn-sm">Hitta hit</button>
+          </li>
+          <li class="nav-item">
+            <button id="historyBtn" class="btn btn-info btn-sm">Historia</button>
+          </li>
+        </ul>
+      </nav>
     </header>
     <section>
       <article id="content"></article>
@@ -45,49 +44,33 @@
     </footer>
   </div>
 
-
-  <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
   <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyC6cL89hWY3EYQz5V2rScWyLEGpWTXhi7Q",
-      authDomain: "sundreskoladb.firebaseapp.com",
-      databaseURL: "https://sundreskoladb.firebaseio.com",
-      projectId: "sundreskoladb",
-      storageBucket: "",
-      messagingSenderId: "815538261313"
-    };
-    firebase.initializeApp(config);
 
+    // let booking = {
+    //   dates:["2018-10-16", "2018-10-17", "2018-10-18"],
+    //   toPay:11000,
+    //   firstName:"Christian",
+    //   lastName:"Svensson",
+    //   personalIdentityNumber:"19820223-7352",
+    //   streetAddress:"Blåssippev.17",
+    //   zipCode:"28713",
+    //   postTown:"Göteborg",
+    //   phoneNumber:"042-6563238",
+    //   email:"christiansvensson@gmail.com",
+    //   bookingDate:"2018-02-04"
+    // };
 
-    let bookingManager = new BookingManager(firebase.database());
+    // $.post("/makeBooking", booking);
 
-    // let booking = new Booking(["2018-01-01", "2018-01-02", "2018-01-03"], 9900, "Samuel", "Bering", "19782013-1628", "Järnlundsv. 17", "12060",
-    //   "Årsta", "070-7680849", "samuelbering@hotmail.com", "2018-02-01");
-
-    // let booking = new Booking(["2018-03-07", "2018-03-08", "2018-03-09"], 9900, "Samuel", "Bering", "19782013-1628", "Järnlundsv. 17", "12060",
-    //   "Årsta", "070-7680849", "samuelbering@hotmail.com", "2018-02-02");
-
-    // let booking = new Booking(["2018-06-20", "2018-06-21", "2018-06-22"], 9900, "Samuel", "Bering", "19782013-1628", "Järnlundsv. 17", "12060",
-    //   "Årsta", "070-7680849", "samuelbering@hotmail.com", "2018-02-02");
-
-    
-    // let booking = new Booking(["2018-08-20", "2018-08-21", "2018-08-22"], 9900, "Samuel", "Bering", "19782013-1628", "Järnlundsv. 17", "12060",
-    //   "Årsta", "070-7680849", "samuelbering@hotmail.com", "2018-02-02");
-
-    // bookingManager.MakeBooking(booking);
-
-    bookingManager.GetUnavailableDates((dates)=>{
-      console.log(dates);
-    }, (error)=>{
-      console.log(error);
+      $.get("/getUnavailableDates", (bookings) => {
+      console.log(bookings);
+      console.log(bookings[11]);
     });
-
-
+   
   </script>
 
   <script src="index.js"></script>
-  
+
 </body>
 
 </html>

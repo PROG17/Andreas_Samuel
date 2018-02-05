@@ -5,11 +5,19 @@ const app = express();
 const includesModule = require("./Includes/includes.js");
 const findUsModule = require("./FindUs/findus.js");
 const historyModule = require("./History/history.js");
+const manageBookingsModule = require("./ManageBookings/manageBookings.js");
 
 const mainRoute = path.join(__dirname, "public");
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(mainRoute));
 
+//Hantera Bokningar
+app.get('/getUnavailableDates',manageBookingsModule.getUnavailableDates);
+
+app.post('/makeBooking', manageBookingsModule.makeBooking);
 //Hitta hit
 app.get("/findus", findUsModule.findUs);
 
