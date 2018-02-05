@@ -9,3 +9,11 @@ $("#findUsBtn").click((e) => {
         $("#content").html(data);
     });
 });
+
+$("#historyBtn").click((e) => {
+    $.get('/history', (data) => {
+        $("#content").html(data);
+    });
+});
+
+

@@ -4,6 +4,7 @@ const fs = require("fs");
 const app = express();
 const includesModule = require("./Includes/includes.js");
 const findUsModule = require("./FindUs/findus.js");
+const historyModule = require("./History/history.js");
 
 const mainRoute = path.join(__dirname, "public");
 
@@ -15,9 +16,7 @@ app.get("/findus", findUsModule.findUs);
 //Ingår
 app.get("/includes", includesModule.includes);
 
-app.get("/history", function (req, res) {
-    res.send("Såhär började det...");
-});
+app.get("/history", historyModule.history);
 
 app.get("/", function (req, res) {
     res.sendFile(mainRoute + "/index.html");
