@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
-    "jquery-weekpicker": "^1.0.4"
+    "jquery-weekpicker": "^1.0.4",
+    "moment": "^2.20.1"
   }
 }

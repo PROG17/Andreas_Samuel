@@ -56,6 +56,7 @@ $(function() {
 
         let text = $("<p>" + weekNumber + "</p>").attr("id", "w" + addedWeeksCount);
         let startDateHidden = $("<input type='hidden'>").attr("value", startDate);
+        startDateHidden.addClass("startDate");
 
         td.append(text);
         td.append(startDateHidden);
