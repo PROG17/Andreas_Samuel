@@ -41,10 +41,9 @@
                 
                       <!-- Modal body -->
                       <div class="modal-body">
-                        <!-- <form> -->
-                          
                           <div class="form-group">
                               <input type="button" class="week-picker btn btn-sm btn-primary" value="Välj veckor"/>
+                              <span id="week-picker-validation" class="text-danger"></span>
                               <table id="weeks" class="table form-control">
                                 <thead>
                                   <tr>
@@ -54,8 +53,8 @@
                               <tbody>
                               </tbody>
                               </table>
-                              <input type="hidden" id="startDate"/>
-                              <input type="hidden" id="endDate"/>
+                              <!-- <input type="hidden" id="startDate"/>
+                              <input type="hidden" id="endDate"/> -->
                               <script type="text/javascript">
                                   function getUnavailableDates(){
                                       return ["2018-02-12", "2018-02-13", "2018-02-14","2018-02-15","2018-02-16", "2018-02-17", "2018-02-18"];
@@ -65,10 +64,10 @@
 
                           <div class="form-group">
                               <label>Att betala</label>
-                              <input class="form-control" type="text" name="namn">
+                              <input id="topay" class="form-control" type="text" name="namn">
                             </div>
                             <div class="form-group">
-                                <label>Föramn</label>
+                                <label>Förnamn</label>
                                 <input id="firstname" class="form-control" type="text" name="namn">
                               </div>
                               <div class="form-group">
@@ -99,44 +98,7 @@
                                   <label>Email</label>
                                   <input id="email" class="form-control" type="text" name="namn">
                                 </div>
-                                <button id="saveBtn">Spara</button>
-                                <script>
-                                  $(function(){
-
-                                    function getDatesFromUserInput(){
-                                      var dateInputs = $(".startDate");
-                                      var dates = new Array();
-                                      for (let i = 0; i < dateInputs.length; i++) {
-                                        dates.push($(dateInputs[i]).val());
-                                      }
-                                      let counter = 1;
-                                      let allDates = new Array();
-
-                                      for (let i = 0; i < dates.length; i++) {
-                                          for (let j = 0; j < 7; j++) {
-                                          let tempDate = new moment(dates[i]);
-                                          tempDate.add(j, 'day');
-                                          allDates.push(tempDate.format('YYYY-MM-DD'));
-                                          } 
-                                      }
-                                      return allDates;
-                                      };
-
-                                    $("#saveBtn").click(function(){
-                                      let dates = getDatesFromUserInput();
-                                      let fName = $("#firstname").val();
-                                      let lName = $("#lastname").val();
-                                      let identityCode = $("#identitycode").val();
-                                      let street = $("#streetaddress").val();
-                                      let postalCode = $("#postalcode").val();
-                                      let city = $("#city").val();
-                                      let phone = $("#phone").val();
-                                      let email = $("#email").val();
-                                      let bookingDate = moment().format('YYYY-MM-DD');
-                                    });
-                                  });
-                                </script>
-                        <!-- </form> -->
+                                <button id="saveBookingBtn">Spara</button>
                       </div>
                 
                       <!-- Modal footer -->
@@ -179,6 +141,8 @@
       messagingSenderId: "384957736409"
     };
     firebase.initializeApp(config);
+  </script>
+  <script src="scripts/index-modal.js">
   </script>
 </body>
 
