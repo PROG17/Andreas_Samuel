@@ -7,9 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="index.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
   <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css">
@@ -17,6 +19,9 @@
   <script type="text/javascript" defer src="scripts/datepicker-swedish.js"></script>
   <script src="scripts/moment-with-locales.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/locale/sv.js"></script> -->
+=======
+  <script src="manageBookings.js"></script>
+>>>>>>> master-merge
 </head>
 
 <body>
@@ -28,6 +33,7 @@
       <nav class="navbar navbar-expand-sm bg-light">
           <ul class="navbar-nav">
             <li class="nav-item">
+<<<<<<< HEAD
               <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#booking">Boka</button>
               <div class="modal fade" id="booking">
                   <div class="modal-dialog">
@@ -41,10 +47,9 @@
                 
                       <!-- Modal body -->
                       <div class="modal-body">
-                        <!-- <form> -->
-                          
                           <div class="form-group">
                               <input type="button" class="week-picker btn btn-sm btn-primary" value="Välj veckor"/>
+                              <span id="week-picker-validation" class="text-danger"></span>
                               <table id="weeks" class="table form-control">
                                 <thead>
                                   <tr>
@@ -54,8 +59,8 @@
                               <tbody>
                               </tbody>
                               </table>
-                              <input type="hidden" id="startDate"/>
-                              <input type="hidden" id="endDate"/>
+                              <!-- <input type="hidden" id="startDate"/>
+                              <input type="hidden" id="endDate"/> -->
                               <script type="text/javascript">
                                   function getUnavailableDates(){
                                       return ["2018-02-12", "2018-02-13", "2018-02-14","2018-02-15","2018-02-16", "2018-02-17", "2018-02-18"];
@@ -65,10 +70,10 @@
 
                           <div class="form-group">
                               <label>Att betala</label>
-                              <input class="form-control" type="text" name="namn">
+                              <input id="topay" class="form-control" type="text" name="namn">
                             </div>
                             <div class="form-group">
-                                <label>Föramn</label>
+                                <label>Förnamn</label>
                                 <input id="firstname" class="form-control" type="text" name="namn">
                               </div>
                               <div class="form-group">
@@ -99,44 +104,7 @@
                                   <label>Email</label>
                                   <input id="email" class="form-control" type="text" name="namn">
                                 </div>
-                                <button id="saveBtn">Spara</button>
-                                <script>
-                                  $(function(){
-
-                                    function getDatesFromUserInput(){
-                                      var dateInputs = $(".startDate");
-                                      var dates = new Array();
-                                      for (let i = 0; i < dateInputs.length; i++) {
-                                        dates.push($(dateInputs[i]).val());
-                                      }
-                                      let counter = 1;
-                                      let allDates = new Array();
-
-                                      for (let i = 0; i < dates.length; i++) {
-                                          for (let j = 0; j < 7; j++) {
-                                          let tempDate = new moment(dates[i]);
-                                          tempDate.add(j, 'day');
-                                          allDates.push(tempDate.format('YYYY-MM-DD'));
-                                          } 
-                                      }
-                                      return allDates;
-                                      };
-
-                                    $("#saveBtn").click(function(){
-                                      let dates = getDatesFromUserInput();
-                                      let fName = $("#firstname").val();
-                                      let lName = $("#lastname").val();
-                                      let identityCode = $("#identitycode").val();
-                                      let street = $("#streetaddress").val();
-                                      let postalCode = $("#postalcode").val();
-                                      let city = $("#city").val();
-                                      let phone = $("#phone").val();
-                                      let email = $("#email").val();
-                                      let bookingDate = moment().format('YYYY-MM-DD');
-                                    });
-                                  });
-                                </script>
-                        <!-- </form> -->
+                                <button id="saveBookingBtn">Spara</button>
                       </div>
                 
                       <!-- Modal footer -->
@@ -147,15 +115,18 @@
                     </div>
                   </div>
                 </div>
+=======
+              <button id="bookingBtn" class="btn btn-info btn-sm">Boka</button>
+>>>>>>> master-merge
             </li>
             <li class="nav-item">
-              <button class="btn btn-info btn-sm">Ingår</button>
+              <button id="includesBtn" class="btn btn-info btn-sm">Ingår</button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-info btn-sm">Hitta hit</button>
+              <button id="findUsBtn" class="btn btn-info btn-sm">Hitta hit</button>
             </li>
             <li class="nav-item">
-              <button class="btn btn-info btn-sm">Historia</button>
+              <button id="historyBtn" class="btn btn-info btn-sm">Historia</button>
             </li>
           </ul>
         </nav>
@@ -167,19 +138,55 @@
 
     </footer>
   </div>
+
+
   <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
   <script>
     // Initialize Firebase
     var config = {
-      apiKey: "AIzaSyCy-hfqqHNnyiWWplbVXE6wGZfQp31_t4E",
-      authDomain: "sundreskola-4a027.firebaseapp.com",
-      databaseURL: "https://sundreskola-4a027.firebaseio.com",
-      projectId: "sundreskola-4a027",
+      apiKey: "AIzaSyC6cL89hWY3EYQz5V2rScWyLEGpWTXhi7Q",
+      authDomain: "sundreskoladb.firebaseapp.com",
+      databaseURL: "https://sundreskoladb.firebaseio.com",
+      projectId: "sundreskoladb",
       storageBucket: "",
-      messagingSenderId: "384957736409"
+      messagingSenderId: "815538261313"
     };
     firebase.initializeApp(config);
+
+
+    let bookingManager = new BookingManager(firebase.database());
+
+    // let booking = new Booking(["2018-01-01", "2018-01-02", "2018-01-03"], 9900, "Samuel", "Bering", "19782013-1628", "Järnlundsv. 17", "12060",
+    //   "Årsta", "070-7680849", "samuelbering@hotmail.com", "2018-02-01");
+
+    // let booking = new Booking(["2018-03-07", "2018-03-08", "2018-03-09"], 9900, "Samuel", "Bering", "19782013-1628", "Järnlundsv. 17", "12060",
+    //   "Årsta", "070-7680849", "samuelbering@hotmail.com", "2018-02-02");
+
+    // let booking = new Booking(["2018-06-20", "2018-06-21", "2018-06-22"], 9900, "Samuel", "Bering", "19782013-1628", "Järnlundsv. 17", "12060",
+    //   "Årsta", "070-7680849", "samuelbering@hotmail.com", "2018-02-02");
+
+    
+    // let booking = new Booking(["2018-08-20", "2018-08-21", "2018-08-22"], 9900, "Samuel", "Bering", "19782013-1628", "Järnlundsv. 17", "12060",
+    //   "Årsta", "070-7680849", "samuelbering@hotmail.com", "2018-02-02");
+
+    // bookingManager.MakeBooking(booking);
+
+    bookingManager.GetUnavailableDates((dates)=>{
+      console.log(dates);
+    }, (error)=>{
+      console.log(error);
+    });
+
+
   </script>
+<<<<<<< HEAD
+  <script src="scripts/index-modal.js">
+  </script>
+=======
+
+  <script src="index.js"></script>
+  
+>>>>>>> master-merge
 </body>
 
 </html>
