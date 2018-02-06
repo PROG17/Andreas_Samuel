@@ -57,7 +57,12 @@ $(function() {
             $(this).val("Välj veckor");
         },
         beforeShowDay: function(date){
-            let array = getUnavailableDates();
+            let array = [];
+            bookingManager.GetUnavailableDates((dates)=>{
+                array = dates;
+              }, (error)=>{
+                console.log(error);
+              });
             var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
         return [ array.indexOf(string) == -1 ]
         }

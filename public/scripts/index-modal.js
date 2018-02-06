@@ -1,3 +1,5 @@
+// import { lchmod } from "fs";
+
 Array.prototype.contains = function ( needle ) {
     for (i in this) {
         if (this[i].value === needle) return true;
@@ -37,6 +39,10 @@ $("#saveBookingBtn").click(function(){
     let phone = $("#phone").val();
     let email = $("#email").val();
     let bookingDate = moment().format('YYYY-MM-DD');
+    let booking = new Booking(
+        dates,toPay,fName,lName,identityCode,street,postalCode,city,phone,email,bookingDate);
+
+    bookingManager.MakeBooking(booking);
   });
 
   function addWeekToTable(startDate, weekNumber){
