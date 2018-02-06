@@ -46,27 +46,31 @@
 
   <script>
 
-    // let booking = {
-    //   dates:["2018-10-16", "2018-10-17", "2018-10-18"],
-    //   toPay:11000,
-    //   firstName:"Christian",
-    //   lastName:"Svensson",
-    //   personalIdentityNumber:"19820223-7352",
-    //   streetAddress:"Blåssippev.17",
-    //   zipCode:"28713",
-    //   postTown:"Göteborg",
-    //   phoneNumber:"042-6563238",
-    //   email:"christiansvensson@gmail.com",
-    //   bookingDate:"2018-02-04"
-    // };
+    let booking = {
+      dates: ["2018-11-01", "2018-11-02"],
+      toPay: 11000,
+      firstName: "Anders",
+      lastName: "Svensson",
+      personalIdentityNumber: "19820223-7352",
+      streetAddress: "Blåssippev.17",
+      zipCode: "28713",
+      postTown: "Göteborg",
+      phoneNumber: "042-6563238",
+      email: "christiansvensson@gmail.com",
+      bookingDate: "2018-02-04"
+    };
 
-    // $.post("/makeBooking", booking);
+    $.post("/makeBooking", booking, (data, textStatus, jqxhr) => {
+      
+    }).fail((error) => {
 
-      $.get("/getUnavailableDates", (bookings) => {
-      console.log(bookings);
-      console.log(bookings[11]);
     });
-   
+
+    //   $.get("/getUnavailableDates", (bookings) => {
+    //   console.log(bookings);
+    //   console.log(bookings[11]);
+    // });
+
   </script>
 
   <script src="index.js"></script>
