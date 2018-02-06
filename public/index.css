@@ -19,3 +19,7 @@
 .image-school{
     height: 300px;
 }
+
+.modalDisplayBlock{
+    display: block;
+}
