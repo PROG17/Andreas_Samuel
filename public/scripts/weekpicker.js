@@ -2,6 +2,9 @@ $(function() {
     var startDate;
     var endDate;
 
+    $("ui-datepicker-next").val("Framåt");
+    $("ui-datepicker-prev").val("Bakåt");
+
     var selectCurrentWeek = function () {
         window.setTimeout(function () {
             $('.ui-weekpicker').find('.ui-datepicker-current-day a').addClass('ui-state-active').removeClass('ui-state-default');
@@ -69,10 +72,16 @@ $(function() {
     });
 
     var $calendarTR = $('.ui-weekpicker .ui-datepicker-calendar tr');
-    $calendarTR.live('mousemove', function () {
+    // $calendarTR.live('mousemove', function () {
+    //     $(this).find('td a').addClass('ui-state-hover');
+    // });
+    // $calendarTR.live('mouseleave', function () {
+    //     $(this).find('td a').removeClass('ui-state-hover');
+    // });
+    $calendarTR.on('mousemove', function () {
         $(this).find('td a').addClass('ui-state-hover');
     });
-    $calendarTR.live('mouseleave', function () {
+    $calendarTR.on('mouseleave', function () {
         $(this).find('td a').removeClass('ui-state-hover');
     });
 });
