@@ -30,19 +30,25 @@ function getDatesFromUserInput() {
     return allDates;
 };
 
-$("#bookBtn").click(function () {
+$("#openBookingModal").click(function () {
 
-    $.get("/getUnavailableDates", (bookings) => {
-        console.log(bookings);
+    // $.get("/getUnavailableDates", (bookings) => {
+    //     console.log(bookings);
 
-        let bookingModal = $('#booking');
+    //     let bookingModal = $('#booking');
 
-        bookingModal.data("bookingDates", bookings);
+    //     bookingModal.data("bookingDates", bookings);
 
-        bookingModal.addClass("show modalDisplayBlock");
+    //     bookingModal.addClass("show modalDisplayBlock");
         
         
-    });
+    // });
+
+    // $.get("/getUnavailableDates", (bookings) => {
+    //     console.log(bookings);
+    //     unavailableDates = bookings;
+    //     $(".week-picker").datepicker("refresh");
+    // });
 
 });
 

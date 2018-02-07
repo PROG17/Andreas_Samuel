@@ -61,9 +61,7 @@ $(function () {
             else {
                 $("#week-picker-validation").text("Veckan är redan vald.")
             }
-
-            $(this).val("Välj veckor");
-            $.datepicker.clearDate(this);
+            $(this).datepicker('setDate', null);
         },
         beforeShowDay: function (date) {
             let array = unavailableDates == undefined ? [] : unavailableDates;
