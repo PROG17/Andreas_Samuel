@@ -4,9 +4,13 @@ $(function () {
     var unavailableDates;
 
     $.get("/getUnavailableDates", (bookings) => {
+        //success
         console.log(bookings);
         unavailableDates = bookings;
         $(".week-picker").datepicker("refresh");
+    }).fail((error) => {
+        //fail
+        console.log(error.responseJSON);
     });
 
     var selectCurrentWeek = function () {
@@ -71,12 +75,12 @@ $(function () {
     });
 
     $(document)
-    .on('mousemove', '.ui-datepicker-calendar tr', function(){
-        $(this).find('td a').addClass('ui-state-hover')
-    })
-    .on('mouseleave', '.ui-datepicker-calendar tr', function(){
-        $(this).find('td a').removeClass('ui-state-hover')
-    });
+        .on('mousemove', '.ui-datepicker-calendar tr', function () {
+            $(this).find('td a').addClass('ui-state-hover')
+        })
+        .on('mouseleave', '.ui-datepicker-calendar tr', function () {
+            $(this).find('td a').removeClass('ui-state-hover')
+        });
     // var $calendarTR = $('.week-picker .ui-datepicker-calendar tbody tr');
 
     // $calendarTR.toArray().forEach(element => {

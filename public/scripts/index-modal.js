@@ -1,9 +1,9 @@
 // import { lchmod } from "fs";
 
-$('#openBookingModal').on('click', function(){
+$('#openBookingModal').on('click', function () {
 })
 
-Array.prototype.contains = function ( needle ) {
+Array.prototype.contains = function (needle) {
     for (i in this) {
         if (this[i].value === needle) return true;
     }
@@ -40,8 +40,8 @@ $("#openBookingModal").click(function () {
     //     bookingModal.data("bookingDates", bookings);
 
     //     bookingModal.addClass("show modalDisplayBlock");
-        
-        
+
+
     // });
 
     // $.get("/getUnavailableDates", (bookings) => {
@@ -81,7 +81,14 @@ $("#saveBookingBtn").click(function () {
         bookingDate: bookingDate
     };
 
-    $.post("/makeBooking", booking);
+    $.post("/makeBooking", booking, (data, textStatus, jqxhr) => {
+    //succes
+    console.log(data);
+    console.log(textStatus);
+    }).fail((error) => {
+    //fail
+    console.log(error.responseJSON); 
+    });
 
     // let booking = new Booking(
     //     dates,toPay,fName,lName,identityCode,street,postalCode,city,phone,email,bookingDate);
