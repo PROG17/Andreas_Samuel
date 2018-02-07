@@ -1,6 +1,13 @@
 $(function () {
     var startDate;
     var endDate;
+    var unavailableDates;
+
+     $.get("/getUnavailableDates", (bookings) => {
+      console.log(bookings);
+      unavailableDates = bookings;
+      $(".week-picker").datepicker("refresh");
+    });
 
     var selectCurrentWeek = function () {
         window.setTimeout(function () {
@@ -57,39 +64,8 @@ $(function () {
 
             $(this).val("Välj veckor");
         },
-<<<<<<< HEAD
-        beforeShowDay: function(date){
-            // let array = [];
-
-         
-
-
-            // bookingManager.GetUnavailableDates((dates)=>{
-            //     array = dates;
-            //   }, (error)=>{
-            //     console.log(error);
-            //   });
-              
-=======
         beforeShowDay: function (date) {
-            // var $calendarTR = $('.ui-weekpicker .ui-datepicker-calendar tbody tr');
-            // var $calendarTR = $('.ui-weekpicker');
-            // var tbl = $calendarTR.children("table");
-            // var cal = document.querySelector("#ui-datepicker-div");
-            // $calendarTR.on('mousemove', function () {
-            //     $(this).find('td a').addClass('ui-state-hover');
-            // });
-            // $calendarTR.on('mouseleave' ,function () {
-            //     $(this).find('td a').removeClass('ui-state-hover');
-            // });
-
-            let array = [];
-            bookingManager.GetUnavailableDates((dates) => {
-                array = dates;
-            }, (error) => {
-                console.log(error);
-            });
->>>>>>> New_Week-Picker_Branch
+            let array = unavailableDates == undefined ? [] : unavailableDates;
             var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
             return [array.indexOf(string) == -1]
         }
