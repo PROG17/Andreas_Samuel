@@ -1,5 +1,8 @@
 // import { lchmod } from "fs";
 
+$('#openBookingModal').on('click', function(){
+})
+
 Array.prototype.contains = function ( needle ) {
     for (i in this) {
         if (this[i].value === needle) return true;
