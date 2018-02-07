@@ -1,4 +1,3 @@
-$(function() {   
 $(function () {
     var startDate;
     var endDate;
@@ -13,7 +12,6 @@ $(function () {
         var $input = $(input);
         var date = $input.datepicker('getDate');
         if (date !== null) {
-            var firstDay = $input.datepicker( "option", "firstDay" );
             var firstDay = $input.datepicker("option", "firstDay");
             var dayAdjustment = date.getDay() - firstDay;
             if (dayAdjustment < 0) {
@@ -27,7 +25,6 @@ $(function () {
         }
     }
 
-    var getWeekNumber = function(dateText){
     var getWeekNumber = function (dateText) {
         return $.datepicker.iso8601Week(new Date(dateText))
     }
@@ -49,20 +46,18 @@ $(function () {
             let selectedDates = $(".startDate");
             let startDate = getStartDate(this);
             let containsDate = selectedDates.toArray().contains(startDate);
-            if(!containsDate){
             if (!containsDate) {
                 $(this).change();
                 addWeekToTable(startDate, getWeekNumber(dateText));
                 $("#week-picker-validation").text("");
             }
-            else{
             else {
                 $("#week-picker-validation").text("Veckan är redan vald.")
             }
-            
 
             $(this).val("Välj veckor");
         },
+<<<<<<< HEAD
         beforeShowDay: function(date){
             // let array = [];
 
@@ -94,14 +89,12 @@ $(function () {
             }, (error) => {
                 console.log(error);
             });
+>>>>>>> New_Week-Picker_Branch
             var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
-        return [ array.indexOf(string) == -1 ]
             return [array.indexOf(string) == -1]
         }
     });
 
-    var $calendarTR = $('.ui-weekpicker .ui-datepicker-calendar tr');
-    $calendarTR.live('mousemove', function () {
     
     var $calendarTR = $('.week-picker .ui-datepicker-calendar tbody tr');
     // var $calendarTR = $('.ui-weekpicker').children();
@@ -115,7 +108,6 @@ $(function () {
         event.preventDefault();
         $(this).find('td a').addClass('ui-state-hover');
     });
-    $calendarTR.live('mouseleave', function () {
     $calendarTR.on('mouseleave' ,function (event) {
         event.preventDefault();
         $(this).find('td a').removeClass('ui-state-hover');

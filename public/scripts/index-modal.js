@@ -1,6 +1,13 @@
 // import { lchmod } from "fs";
 
+<<<<<<< HEAD
 Array.prototype.contains = function (needle) {
+=======
+$('#openBookingModal').on('click', function(){
+})
+
+Array.prototype.contains = function ( needle ) {
+>>>>>>> New_Week-Picker_Branch
     for (i in this) {
         if (this[i].value === needle) return true;
     }
