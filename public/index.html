@@ -22,10 +22,11 @@
 <body>
   <div class="container">
     <header>
-      <div class="jumbotron">
+      <!-- <div class="jumbotron">
         <h1>Sundre skola</h1>
-      </div>
+      </div> -->
       <nav class="navbar navbar-expand-sm bg-light">
+        <a class="navbar-brand">Sundre skola</a>
         <ul class="navbar-nav">
           <li class="nav-item">
             <button id="openBookingModal" class="btn btn-info btn-sm" data-toggle="modal" data-target="#booking">Boka</button>
@@ -112,6 +113,30 @@
             <button id="includesBtn" class="btn btn-info btn-sm">Ingår</button>
           </li>
           <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn btn-info btn-sm dropdown-toggle" type="button" id="SurroundingDropdownMenu" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                Dropdown
+              </button>
+              <div class="dropdown-menu" aria-labelledby="SurroundingDropdownMenu">
+                <button class="dropdown-item surroundingBtn" type="button" data-href="https://www.ica.se/butiker/nara/gotland/hoburgshallen-1591/start">Mataffär</button>
+                <button class="dropdown-item" type="button">Bad</button>
+                <button class="dropdown-item surroundingBtn" type="button" data-href="http://www.korsbarsgarden.se">Körsbärsgården</button>
+                <button class="dropdown-item surroundingBtn" type="button" data-href="http://www.gotlandsbrynet.se/Kettelviskmuseet.html">Stenmuseet</button>              
+                <button class="dropdown-item surroundingBtn" type="button" data-href="https://sv.wikipedia.org/wiki/Hoburgsgubben">Hoburgen</button>
+                <button class="dropdown-item surroundingBtn" type="button" data-href="http://www.bygdeband.se/?post_type=attachment&p=496829">Barshageudd</button>
+                <button class="dropdown-item surroundingBtn" type="button" data-href="http://www.bygdeband.se/bildgalleri/2328186/sverige/gotlands-lan/gotland/sundre-socken/livraddningsstationen-i-sundre">Livräddningsstationen</button>
+                <button class="dropdown-item surroundingBtn" type="button" data-href="https://www.majstregarden.se">Maistregården Café-Restaurang</button>
+                <button class="dropdown-item surroundingBtn" type="button" data-href="http://www.holmhallar.se">Holmhällar Restaurang och bad</button>
+                <button class="dropdown-item surroundingBtn" type="button" data-href="https://bertilnorrbyab.wordpress.com">Hyra cykel</button>
+                <button class="dropdown-item surroundingBtn" type="button" data-href="http://www.hemse.com">Systembolag-Hemse</button>                
+                <button class="dropdown-item surroundingBtn" type="button" data-href="http://www.gotland.net/plats/hoburgs-fyr">Hoburgs fyr</button>
+                <button class="dropdown-item surroundingBtn" type="button" data-href="http://gotland.com/produkter/156224/150">Museum Lars J. / Vamlingbo prästg.</button>
+                <button class="dropdown-item surroundingBtn" type="button" data-href="http://www.vamlingbo.se">Vamlingbo</button>    
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
             <button id="findUsBtn" class="btn btn-info btn-sm">Hitta hit</button>
           </li>
           <li class="nav-item">
@@ -145,7 +170,7 @@
     // };
 
     // $.post("/makeBooking", booking, (data, textStatus, jqxhr) => {
-      
+
     // }).fail((error) => {
 
     // });

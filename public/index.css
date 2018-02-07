@@ -23,3 +23,9 @@
 .modalDisplayBlock{
     display: block;
 }
+
+.IframePage{
+    width: 100%;
+    height: 600px;
+    min-width: 400px;
+}

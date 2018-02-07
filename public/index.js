@@ -16,4 +16,14 @@ $("#historyBtn").click((e) => {
     });
 });
 
+$(".surroundingBtn").click((e) => {
+    let href = e.target.getAttribute("data-href");
+    let iframe = document.createElement("iframe");
+    iframe.className="IframePage";
+    // iframe.width = "900";
+    // iframe.height = "600";
+    iframe.src = href;
+    $("#content").empty().append(iframe);
+});
+
 
