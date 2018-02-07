@@ -3,10 +3,10 @@ $(function () {
     var endDate;
     var unavailableDates;
 
-     $.get("/getUnavailableDates", (bookings) => {
-      console.log(bookings);
-      unavailableDates = bookings;
-      $(".week-picker").datepicker("refresh");
+    $.get("/getUnavailableDates", (bookings) => {
+        console.log(bookings);
+        unavailableDates = bookings;
+        $(".week-picker").datepicker("refresh");
     });
 
     var selectCurrentWeek = function () {
@@ -39,7 +39,7 @@ $(function () {
     $('.week-picker').datepicker({
         beforeShow: function () {
             $('#ui-datepicker-div').addClass('ui-weekpicker');
-            selectCurrentWeek();
+            // selectCurrentWeek();
             var d = $('.ui-weekpicker > table');
         },
         onClose: function () {
@@ -63,6 +63,7 @@ $(function () {
             }
 
             $(this).val("Välj veckor");
+            $.datepicker.clearDate(this);
         },
         beforeShowDay: function (date) {
             let array = unavailableDates == undefined ? [] : unavailableDates;
@@ -71,24 +72,31 @@ $(function () {
         }
     });
 
-    
-    var $calendarTR = $('.week-picker .ui-datepicker-calendar tbody tr');
-    // var $calendarTR = $('.ui-weekpicker').children();
-    // $calendarTR.live('mousemove', function () {
+    $(document)
+    .on('mousemove', '.ui-datepicker-calendar tr', function(){
+        $(this).find('td a').addClass('ui-state-hover')
+    })
+    .on('mouseleave', '.ui-datepicker-calendar tr', function(){
+        $(this).find('td a').removeClass('ui-state-hover')
+    });
+    // var $calendarTR = $('.week-picker .ui-datepicker-calendar tbody tr');
+
+    // $calendarTR.toArray().forEach(element => {
+    //     $(element).on('mousemove', function (event) {
+    //         // event.preventDefault();
+    //         $(element).find('td a').addClass('ui-state-hover');
+    //     });
+    // });
+    // $calendarTR.on('mousemove', function (event) {
+    //     // event.preventDefault();
     //     $(this).find('td a').addClass('ui-state-hover');
     // });
-    // $calendarTR.live('mouseleave', function () {
-    //     $(this).find('td a').removeClass('ui-state-hover');
+    // $calendarTR.on('mouseleave', function (event) {
+    //     // event.preventDefault();
+    //     // $(this).find('td a').removeClass('ui-state-hover');
+    //     $(this).removeClass('ui-state-hover');
     // });
-    $calendarTR.on('mouseover', function (event) {
-        event.preventDefault();
-        $(this).find('td a').addClass('ui-state-hover');
-    });
-    $calendarTR.on('mouseleave' ,function (event) {
-        event.preventDefault();
-        $(this).find('td a').removeClass('ui-state-hover');
-    });
 
-
+    // $(".week-picker").datepicker("refresh");
 
 });
