@@ -1,5 +1,3 @@
-// import { lchmod } from "fs";
-
 $('form').on('reset', function (e) {
     let spans = $(".input-validator");
     $(spans).text("");
@@ -32,7 +30,7 @@ function getDatesFromUserInput() {
     return allDates;
 };
 
-$("#openBookingModal").click(function () {
+$("#openBookingModal").hover(function () {
 
     // $.get("/getUnavailableDates", (bookings) => {
     //     console.log(bookings);
@@ -49,8 +47,12 @@ $("#openBookingModal").click(function () {
     // $.get("/getUnavailableDates", (bookings) => {
     //     console.log(bookings);
     //     unavailableDates = bookings;
-    //     $(".week-picker").datepicker("refresh");
+    //     loadWeekPicker();
+    //     console.log("Hämtar värden")
     // });
+    // updateWeekPicker();
+
+    // populateUnavailableDatesAsync();
 
 });
 
@@ -87,7 +89,7 @@ $("#saveBookingBtn").click(function () {
         //succes
         console.log(data);
         console.log(textStatus);
-        resetForm();
+        $("form").trigger("reset");
         alert("Din bokning är registrerad");
     }).fail((error) => {
         //fail
@@ -95,10 +97,7 @@ $("#saveBookingBtn").click(function () {
         populateFormValidation(error)
     });
 
-    // let booking = new Booking(
-    //     dates,toPay,fName,lName,identityCode,street,postalCode,city,phone,email,bookingDate);
-
-    // bookingManager.MakeBooking(booking);
+    updateWeekPicker();
 });
 
 function populateFormValidation(error) {

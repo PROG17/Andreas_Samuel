@@ -37,8 +37,8 @@ $(function () {
         if (validator.isEmpty(value)) {
             $(spanSelector).text("Förnamn är obligatorisk.");
         }
-        else if (!validator.isAlpha(value, ["sv-SE"])) {
-            $(spanSelector).text("Förnamnet får bara innehålla tecken från A-Ö.");
+        else if (!validator.matches(value, /[A-ö\s]/)) {
+            $(spanSelector).text("Förnamnet får bara innehålla bokstäver från A-Ö.");
         }
         else if(!validator.isLength(value ,{min: 2, max: 50})){
             $(spanSelector).text("Förnamnet måste vara mellan 2-50 tecken.");
@@ -56,8 +56,8 @@ $(function () {
         if (validator.isEmpty(value)) {
             $(spanSelector).text("Efternamn är obligatorisk.");
         }
-        else if (!validator.isAlpha(value, ["sv-SE"])) {
-            $(spanSelector).text("Efternamnet får bara innehålla tecken från A-Ö.");
+        else if (!validator.matches(value, /[A-ö\s -]/)) {
+            $(spanSelector).text("Efternamnet får bara innehålla bokstäver från A-Ö.");
         }
         else if(!validator.isLength(value ,{min: 2, max: 50})){
             $(spanSelector).text("Efternamnet måste vara mellan 2-50 tecken.");
@@ -75,7 +75,7 @@ $(function () {
         if (validator.isEmpty(value)) {
             $(spanSelector).text("Personnummer är obligatorisk.");
         }
-        else if (!validator.matches(identityNumber, /^\d{6}-\d{4}$|^\d{8}-\d{4}$/)) {
+        else if (!validator.matches(value, /^\d{6}-\d{4}$|^\d{8}-\d{4}$/)) {
             $(spanSelector).text("Personnumret är ogiltigt");
         }
         else {
@@ -91,7 +91,8 @@ $(function () {
         if (validator.isEmpty(value)) {
             $(spanSelector).text("Gatuadress är obligatorisk.");
         }
-        else if (!validator.isAlphanumeric(value, ["sv-SE"])) {
+        // 
+        else if (!validator.matches(value, /[A-ö\s0-9 -]/)) {
             $(spanSelector).text("Gatuadress får bara innehålla bokstäver mellan A-Ö och siffror.");
         }
         else if(!validator.isLength(value ,{min: 2, max: 50})){
