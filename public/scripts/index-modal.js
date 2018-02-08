@@ -1,7 +1,10 @@
 // import { lchmod } from "fs";
 
-$('#openBookingModal').on('click', function () {
-})
+$('form').on('reset', function (e) {
+    let spans = $(".input-validator");
+    $(spans).text("");
+    let weekTable = $("#weeks > tbody").empty();
+});
 
 Array.prototype.contains = function (needle) {
     for (i in this) {
@@ -9,7 +12,6 @@ Array.prototype.contains = function (needle) {
     }
     return false;
 }
-
 
 function getDatesFromUserInput() {
     var dateInputs = $(".startDate");
@@ -82,12 +84,15 @@ $("#saveBookingBtn").click(function () {
     };
 
     $.post("/makeBooking", booking, (data, textStatus, jqxhr) => {
-    //succes
-    console.log(data);
-    console.log(textStatus);
+        //succes
+        console.log(data);
+        console.log(textStatus);
+        resetForm();
+        alert("Din bokning är registrerad");
     }).fail((error) => {
-    //fail
-    console.log(error.responseJSON); 
+        //fail
+        console.log(error.responseJSON);
+        populateFormValidation(error)
     });
 
     // let booking = new Booking(
@@ -95,6 +100,18 @@ $("#saveBookingBtn").click(function () {
 
     // bookingManager.MakeBooking(booking);
 });
+
+function populateFormValidation(error) {
+    let validationDiv = $(".form-server-validation");
+
+    let ul = $("<ul id='server-errors'>")
+
+    error.responseJSON.validationErrors.forEach(err => {
+        ul.append($(`<li class='text-danger'>${err}</li>`))
+    });
+
+    validationDiv.append(ul);
+};
 
 function addWeekToTable(startDate, weekNumber) {
     let addedWeeksCount = $("#weeks > tbody").children().length;
