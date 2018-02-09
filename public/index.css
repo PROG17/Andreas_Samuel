@@ -29,3 +29,11 @@
     height: 600px;
     min-width: 400px;
 }
+
+/* .ui-datepicker-current-day .ui-state-active{
+    background: greenyellow; 
+} */
+
+.ui-state-highlight.ui-state-default{
+    background:yellow;
+    }

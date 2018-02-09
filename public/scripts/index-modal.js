@@ -1,3 +1,5 @@
+WeekPickerManager.updateWeekPickerDates(".week-picker");
+
 $('form').on('reset', function (e) {
     let spans = $(".input-validator");
     $(spans).text("");
@@ -29,32 +31,6 @@ function getDatesFromUserInput() {
     }
     return allDates;
 };
-
-$("#openBookingModal").hover(function () {
-
-    // $.get("/getUnavailableDates", (bookings) => {
-    //     console.log(bookings);
-
-    //     let bookingModal = $('#booking');
-
-    //     bookingModal.data("bookingDates", bookings);
-
-    //     bookingModal.addClass("show modalDisplayBlock");
-
-
-    // });
-
-    // $.get("/getUnavailableDates", (bookings) => {
-    //     console.log(bookings);
-    //     unavailableDates = bookings;
-    //     loadWeekPicker();
-    //     console.log("Hämtar värden")
-    // });
-    // updateWeekPicker();
-
-    // populateUnavailableDatesAsync();
-
-});
 
 $("#saveBookingBtn").click(function () {
 
@@ -97,7 +73,9 @@ $("#saveBookingBtn").click(function () {
         populateFormValidation(error)
     });
 
-    updateWeekPicker();
+    // updateWeekPicker();
+
+    WeekPickerManager.updateWeekPickerDates(".week-picker")
 });
 
 function populateFormValidation(error) {
