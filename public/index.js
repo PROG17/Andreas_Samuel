@@ -1,3 +1,9 @@
+$("#sundreSkola").click((e) => {
+    $.get('/sundreSkola', (data) => {
+        $("#content").html(data);
+    });
+});
+
 $("#includesBtn").click((e) => {
     $.get('/includes', (data) => {
         $("#content").html(data);
@@ -26,4 +32,8 @@ $(".surroundingBtn").click((e) => {
     $("#content").empty().append(iframe);
 });
 
+
+$.get('/sundreSkola', (data) => {
+    $("#content").html(data);
+});
 

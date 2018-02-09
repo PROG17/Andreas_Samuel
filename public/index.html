@@ -29,11 +29,18 @@
       <!-- <div class="jumbotron">
         <h1>Sundre skola</h1>
       </div> -->
-      <nav class="navbar navbar-expand-sm bg-light">
-        <a class="navbar-brand">Sundre skola</a>
-        <ul class="navbar-nav">
+      <nav class="navbar navbar-expand-sm navbar-light bg-faded">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a id="sundreSkola" class="navbar-brand">Sundre skola</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <button id="openBookingModal" class="btn btn-info btn-sm" data-toggle="modal" data-target="#booking">Boka</button>
+            <button id="openBookingModal" class="btn btn-light btn-sm" data-toggle="modal" data-target="#booking">Boka</button>
             <div class="modal fade" id="booking">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -146,13 +153,13 @@
             </div>
           </li>
           <li class="nav-item">
-            <button id="includesBtn" class="btn btn-info btn-sm">Ingår</button>
+            <button id="includesBtn" class="btn btn-light btn-sm">Ingår</button>
           </li>
           <li class="nav-item">
             <div class="dropdown">
-              <button class="btn btn-info btn-sm dropdown-toggle" type="button" id="SurroundingDropdownMenu" data-toggle="dropdown" aria-haspopup="true"
+              <button class="btn btn-light btn-sm dropdown-toggle" type="button" id="SurroundingDropdownMenu" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                Dropdown
+                Omgivning
               </button>
               <div class="dropdown-menu" aria-labelledby="SurroundingDropdownMenu">
                 <button class="dropdown-item surroundingBtn" type="button" data-href="https://www.ica.se/butiker/nara/gotland/hoburgshallen-1591/start">Mataffär</button>
@@ -173,16 +180,18 @@
             </div>
           </li>
           <li class="nav-item">
-            <button id="findUsBtn" class="btn btn-info btn-sm">Hitta hit</button>
+            <button id="findUsBtn" class="btn btn-light btn-sm">Hitta hit</button>
           </li>
           <li class="nav-item">
-            <button id="historyBtn" class="btn btn-info btn-sm">Historia</button>
+            <button id="historyBtn" class="btn btn-light btn-sm">Historia</button>
           </li>
         </ul>
+      </div>
       </nav>
     </header>
     <section>
-      <article id="content"></article>
+      <article id="content">
+      </article>
     </section>
     <footer>
 

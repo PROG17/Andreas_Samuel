@@ -2,6 +2,9 @@ const express = require('express');
 const path = require("path");
 const fs = require("fs");
 const app = express();
+
+const sundreSkolaModule = require("./sundreskola/sundreskola.js");
+
 const includesModule = require("./Includes/includes.js");
 const findUsModule = require("./FindUs/findus.js");
 const historyModule = require("./History/history.js");
@@ -20,6 +23,9 @@ app.get('/getUnavailableDates',manageBookingsModule.getUnavailableDates);
 app.post('/makeBooking', manageBookingsModule.makeBooking);
 //Hitta hit
 app.get("/findus", findUsModule.findUs);
+
+//Sundre skola(homepage)
+app.get("/sundreskola", sundreSkolaModule.sundreSkola);
 
 //Ingår
 app.get("/includes", includesModule.includes);
