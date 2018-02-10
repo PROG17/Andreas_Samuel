@@ -37,3 +37,7 @@
 .ui-state-highlight.ui-state-default{
     background:yellow;
     }
+
+.no-border-table{
+    border:none;
+}
