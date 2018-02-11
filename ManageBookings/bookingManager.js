@@ -42,6 +42,25 @@ module.exports = class BookingManager {
             errorFunc(error);
         });
     }
+
+    GetAllBookings(succesFunc, errorFunc) {
+        let bookingsRef = this.database.ref("Bookings/");
+
+        bookingsRef.on("value", function (bookings) {
+            bookingsRef.off("value");
+            let allBookings = [];
+
+            bookings.forEach(function (booking) {
+                console.log(booking.key + " : " + booking.val());
+                let b = booking.val();
+                allBookings.push(b);
+            });
+            succesFunc(allBookings);
+        }, function (error) {
+            bookingsRef.off("value");
+            errorFunc(error);
+        });
+    }
 }
 
 class Booking {
