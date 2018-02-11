@@ -20,6 +20,8 @@
   <script src="scripts/moment-with-locales.js"></script>
   <script src="scripts/validator.js"></script>
   <script src="scripts/form-validation.js"></script>
+  <script src="scripts/login.js"></script>
+  <script src="scripts/listBookings.js"></script>
   <!-- <script src="manageBookings.js"></script> -->
 </head>
 
@@ -38,7 +40,7 @@
         <a id="sundreSkola" class="navbar-brand">Sundre skola</a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+          <ul id="navbar-list" class="navbar-nav mr-auto">
             <li class="nav-item">
               <button id="openBookingModal" class="btn btn-light btn-sm" data-toggle="modal" data-target="#booking">Boka</button>
               <div class="modal fade" id="booking">
@@ -186,6 +188,54 @@
             </li>
             <li class="nav-item">
               <button id="historyBtn" class="btn btn-light btn-sm">Historia</button>
+            </li>
+            <li class="nav-item">
+              <button id="listBookingsBtn" class="btn btn-light btn-sm">Se bokningar</button>
+            </li>
+            <li class="nav-item">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#exampleModal">
+                Logga in
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Logga in</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form onsubmit="return false">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Email</label>
+                          <div class="col-sm-9">
+                            <input id="login-email" class="form-control" type="text" name="email">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Lösenord</label>
+                            <div class="col-sm-9">
+                              <input id="login-password" class="form-control" type="password" name="password">
+                            </div>
+                          </div>
+                          <div class="row">
+                              <span class="col login-validation text-danger"></span>
+                          </div>
+                          <div>
+                            <button id="login-btn" class="float-right">Logga in</button>
+                          </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Stäng</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
