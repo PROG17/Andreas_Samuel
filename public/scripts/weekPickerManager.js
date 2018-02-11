@@ -1,6 +1,6 @@
 class WeekPickerManager {
 
-    static reloadWeekPicker(selector, unavailableDates){
+    static reloadWeekPicker(selector, unavailableDates) {
         $(selector).datepicker("destroy");
         this.loadWeekPicker(selector, unavailableDates)
         $('.week-picker').datepicker("refresh");
@@ -8,7 +8,7 @@ class WeekPickerManager {
 
     static loadWeekPicker(selector, unvavailableDates) {
         $(selector).datepicker({
-            calculateWeek: function(date){
+            calculateWeek: function (date) {
                 return Math.floor((moment(date).dayOfYear() - 1) / 7) + 2;
             },
             beforeShow: function () {
@@ -29,14 +29,16 @@ class WeekPickerManager {
                 if (!containsDate) {
                     $(this).change();
                     WeekPickerManager.addWeekToTable(startDate, WeekPickerManager.getWeekNumber(dateText), "#weeks");
-                    WeekPickerManager.setValidationMessage("#week-picker-validation", "")
+                    WeekPickerManager.PopulateInputWithTableSum(".week-cost", "#topay");
+                    WeekPickerManager.setValidationMessage("#week-picker-validation", "");
+                    WeekPickerManager.setValidationMessage(".weeks-validation", "");
                 }
                 else {
                     WeekPickerManager.setValidationMessage("#week-picker-validation", "Veckan är redan vald.")
                 }
 
                 // $('.ui-datepicker-calendar tr').find('td a').addClass('ui-state-active');
-                
+
                 // $(this).datepicker('setDate', null);
             },
             beforeShowDay: function (date) {
@@ -52,37 +54,75 @@ class WeekPickerManager {
             .on('mouseleave', '.ui-datepicker-calendar tr', function () {
                 $(this).find('td a').removeClass('ui-state-hover')
             })
-            .on('toggle','.ui-datepicker-calendar tr', function () {
+            .on('toggle', '.ui-datepicker-calendar tr', function () {
                 $(this).find('td a').addClass('ui-state-active')
             })
+    }
+    static PopulateInputWithTableSum(costSelector, inputSelector) {
+        $(inputSelector).val(WeekPickerManager.CalculateSum(costSelector));
+    }
+
+    static CalculateSum(costSelector) {
+        let costs = $(costSelector);
+        let sum = 0;
+        Array.from(costs).forEach(c => {
+            let amount = $(c).val();
+            sum += Number(amount);
+        })
+        return sum;
     }
 
     static addWeekToTable(startDate, weekNumber, tableSelector) {
         let addedWeeksCount = $(tableSelector + " > tbody").children().length;
-    
+        let weekCost;
+        let weekIsHighSeason =
+            [25, 26, 27, 28, 29, 30, 31, 32]
+                .filter(x => x == weekNumber) > 0 ? true : false;
+
+        if (weekIsHighSeason) {
+            weekCost = 4500;
+        }
+        else {
+            weekCost = 3500;
+        }
+
         let tr = $("<tr id='tr" + addedWeeksCount + "'>");
-        let td1 = $("<td>");
-        let td2 = $("<td>");
-    
+        let td1 = $("<td class='w-25'>");
+        let td2 = $("<td class='w-25'>");
+        let td3 = $("<td class='w-25'>");
+        let td4 = $("<td class='w-25'>");
+
         let text = $("<p>" + weekNumber + "</p>").attr("id", "w" + addedWeeksCount);
+
         let startDateHidden = $("<input type='hidden'>").attr("value", startDate);
         startDateHidden.addClass("startDate");
+
+        let costText = $(`<p class='badge badge-pill badge-secondary'>${weekCost + " kr"}</p>`)
+
+        let costHidden = $("<input type='hidden'>").attr("value", weekCost);
+        costHidden.addClass("week-cost");
+
         let deleteBtn = $("<button class='btn btn-sm btn-danger'" + addedWeeksCount + "'>x</button>")
         deleteBtn.click(function () {
             $(this).parent().parent().remove();
+            WeekPickerManager.PopulateInputWithTableSum(".week-cost", "#topay");
         })
-    
+
         td1.append(text);
         td1.append(startDateHidden);
-        td2.append(deleteBtn);
-    
+        td2.append(costText);
+        td2.append(costHidden);
+        td4.append(deleteBtn);
+
         tr.append(td1);
         tr.append(td2);
-    
+        tr.append(td3);
+        tr.append(td4);
+
         $(tableSelector).append(tr);
     };
 
-    static setValidationMessage(selector, message){
+    static setValidationMessage(selector, message) {
         $(selector).text(message)
     }
 
@@ -109,14 +149,13 @@ class WeekPickerManager {
 
     static getWeekNumber(dateText) {
         let day = moment(dateText).isoWeekday();
-        if (day === 6 || day === 7)
-        {
+        if (day === 6 || day === 7) {
             return ($.datepicker.iso8601Week(new Date(dateText))) + 1;
         }
-        else{
+        else {
             return $.datepicker.iso8601Week(new Date(dateText));
         }
-    
+
     }
     static updateWeekPickerDates(selector) {
         $.get("/getUnavailableDates", (bookings) => {

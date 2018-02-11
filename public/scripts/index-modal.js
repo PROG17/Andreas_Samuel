@@ -8,7 +8,7 @@ $('form').on('reset', function (e) {
 
 Array.prototype.contains = function (needle) {
     for (i in this) {
-        if (this[i].value === needle) return true;
+        if (this[i].value == needle) return true;
     }
     return false;
 }
@@ -70,25 +70,12 @@ $("#saveBookingBtn").click(function () {
     }).fail((error) => {
         //fail
         console.log(error.responseJSON);
-        populateFormValidation(error)
     });
 
     // updateWeekPicker();
 
     WeekPickerManager.updateWeekPickerDates(".week-picker")
 });
-
-function populateFormValidation(error) {
-    let validationDiv = $(".form-server-validation");
-
-    let ul = $("<ul id='server-errors'>")
-
-    error.responseJSON.validationErrors.forEach(err => {
-        ul.append($(`<li class='text-danger'>${err}</li>`))
-    });
-
-    validationDiv.append(ul);
-};
 
 function addWeekToTable(startDate, weekNumber) {
     let addedWeeksCount = $("#weeks > tbody").children().length;
