@@ -77,11 +77,12 @@ $("#saveBookingBtn").click(function () {
     }).fail((error) => {
         //fail
         console.log(error.responseJSON);
+    })
+    .done(function(){
+        WeekPickerManager.updateWeekPickerDates(".week-picker")
     });
 
     // updateWeekPicker();
-
-    WeekPickerManager.updateWeekPickerDates(".week-picker")
 });
 
 function addWeekToTable(startDate, weekNumber) {
