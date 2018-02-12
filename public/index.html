@@ -203,7 +203,7 @@
             <li class="nav-item">
               <button id="historyBtn" class="btn btn-light btn-sm">Historia</button>
             </li>
-              <!-- </div> -->
+            <!-- </div> -->
             <!-- <li class="nav-item">
               <button id="listBookingsBtn" class="btn btn-light btn-sm">Se bokningar</button>
             </li> -->
@@ -214,11 +214,11 @@
               </button> -->
 
               <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modal-label" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Logga in</h5>
+                      <h5 class="modal-title" id="login-modal-label">Logga in</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -232,17 +232,17 @@
                           </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Lösenord</label>
-                            <div class="col-sm-9">
-                              <input id="login-password" class="form-control" type="password" name="password">
-                            </div>
+                          <label class="col-sm-3 col-form-label">Lösenord</label>
+                          <div class="col-sm-9">
+                            <input id="login-password" class="form-control" type="password" name="password">
                           </div>
-                          <div class="row">
-                              <span class="col login-validation text-danger"></span>
-                          </div>
-                          <div>
-                            <button id="login-btn" class="float-right">Logga in</button>
-                          </div>
+                        </div>
+                        <div class="row">
+                          <span class="col login-validation text-danger"></span>
+                        </div>
+                        <div>
+                          <button id="send-login-btn" class="float-right">Logga in</button>
+                        </div>
                       </form>
                     </div>
                     <div class="modal-footer">
@@ -275,6 +275,20 @@
 
     //   $.get("/getallbookings", (bookings) => {
     //     console.log(bookings);
+
+    //     $.get("/logout", (response) => {
+    //       console.log(response);
+
+    //       $.get("/getallbookings", (bookings) => {
+    //         console.log(bookings);
+    //       }).fail((error) => {
+    //         console.log(error);
+    //       });
+
+
+    //     });
+
+
     //   }).fail((error) => {
     //     console.log(error);
     //   });
@@ -290,24 +304,24 @@
 
 
     // let booking = {
-    //   dates: ["2018-11-01", "2018-11-02"],
+    //   dates: ["2011-11-01", "2011-11-02"],
     //   toPay: 11000,
-    //   firstName: "Anders",
-    //   lastName: "Svensson",
+    //   firstName: "CrazyAnna",
+    //   lastName: "Turesson",
     //   personalIdentityNumber: "19820223-7352",
     //   streetAddress: "Blåssippev.17",
     //   zipCode: "28713",
     //   postTown: "Göteborg",
     //   phoneNumber: "042-6563238",
     //   email: "christiansvensson@hotmail.com",
-    //   bookingDate: "2018-02-04"
+    //   bookingDate: "2018-02-06"
     // };
 
     // $.post("/makeBooking", booking, (data, textStatus, jqxhr) => {
 
     // }).fail((error) => {
 
-    // });
+    // }); 
 
 
 

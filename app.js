@@ -18,8 +18,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(mainRoute));
 
 
-//logga in
+//logga in 
 app.post('/login', accountModule.login);
+//logga ut 
+app.get('/logout',accountModule.logout);
 //Hämta behörighet för användaren
 app.get('/getLoggedInStatus', accountModule.getLoggedInStatus);
 //Hantera Bokningar

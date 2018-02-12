@@ -1,5 +1,5 @@
 $(function () {
-    $("#login-btn").click(function () {
+    $("#send-login-btn").click(function () {
         let emailInput = $("#login-email").val();
         let passInput = $("#login-password").val();
 
@@ -14,6 +14,7 @@ $(function () {
             })
             .done((data) => {
                 checkIfLoggedIn();
+                $("#login-modal").modal("hide");
             })
     });
 });

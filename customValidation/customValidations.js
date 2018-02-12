@@ -1,14 +1,18 @@
 const validator = require('validator');
 
-function validateDate(date, errorStrings) {
+function validateDateFormat(date, errorStrings) {
 
     let isDate = validator.matches(date, /^\d{4}-\d{2}-\d{2}$/);
-    if (!isDate)
+    if (!isDate) {
         errorStrings.push(`Ej korrekt datumformat: ${date}`);
+        return false;
+    }
+    else
+        return true;
 }
 
 
-function validateDates(dates, errorStrings) {
+function validateDates(dates, unavailableDates, errorStrings) {
 
     if (dates == null || dates.length == 0) {
         errorStrings.push(`Minst ett datum är obligatoriskt`);
@@ -16,9 +20,12 @@ function validateDates(dates, errorStrings) {
     }
 
     for (let date of dates) {
-        validateDate(date, errorStrings);
+        if (validateDateFormat(date, errorStrings)) {
+            let isUnavailable = unavailableDates.includes(date);
+            if (isUnavailable)
+                errorStrings.push(`Datumet ${date} är otillgängligt.`);
+        }
     }
-
 }
 
 function hasValue(name, value, errorStrings) {
@@ -67,7 +74,7 @@ function validateEmail(email, errorStrings) {
 }
 
 
-exports.validateDate = validateDate;
+exports.validateDateFormat = validateDateFormat;
 exports.validateDates = validateDates;
 exports.hasValue = hasValue;
 exports.validateCurrency = validateCurrency;

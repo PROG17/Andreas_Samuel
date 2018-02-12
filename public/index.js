@@ -42,20 +42,29 @@ function checkIfLoggedIn() {
         console.log(response);
 
         if (response.loggedIn === true) {
+            $("#login-btn").remove();
             if (response.user.role === "admin") {
-                console.log("Admin logged in");                
+                console.log("Admin logged in");
                 $("#login").prepend("<button id='logoff-btn' type='button' class='btn btn-light btn-sm'>Logga ut</button>");
-                $("#logoff-btn").click(function(){
-                    // Logga ut på servern och uppdatera nav
-                    checkIfLoggedIn();
+
+                $("#logoff-btn").click(function () {
+                    $.get("/logout", (response) => {
+                        // Logga ut på servern och uppdatera nav
+                        checkIfLoggedIn();
+                        console.log(response);
+                    }).fail((error) => {
+                        console.log(error.message);
+                        console.error.error;
+                    });
                 });
                 addListBookingsBtn();
                 $("#login-btn").remove();
             }
         }
-        else{
-            $("#login").prepend("<button id='login-btn' type='button' class='btn btn-light btn-sm' data-toggle='modal' data-target='#exampleModal'>Logga in</button>");
-            $("#logoff-btn").remove()
+        else {
+            $("#login").prepend("<button id='login-btn' type='button' class='btn btn-light btn-sm' data-toggle='modal' data-target='#login-modal'>Logga in</button>");
+            $("#logoff-btn").remove();
+            $("#listBookingsBtn").remove();
         }
     });
 };

@@ -72,6 +72,18 @@ exports.getLoggedInStatus = (req, res) => {
     });
 };
 
+exports.logout = (req, res) => {
+    firebase.auth().signOut().then(() => {
+        res.send("Användare utloggad.");
+    }, (error) => {
+        res.status(500).json({
+            message: "Oväntat fel, kunde ej logga ut användaren.",
+            error: error
+        });
+    });
+}
+
+
 exports.getCurrentUser = getCurrentUser;
 
 
