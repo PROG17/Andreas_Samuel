@@ -13,6 +13,13 @@ Array.prototype.contains = function (needle) {
     return false;
 }
 
+Array.prototype.containsNumber = function (num){
+    for (const i in this) {
+        if (this[i] === num) return true;
+    }
+    return false;
+}
+
 function getDatesFromUserInput() {
     var dateInputs = $(".startDate");
     var dates = new Array();

@@ -20,8 +20,8 @@
   <script src="scripts/moment-with-locales.js"></script>
   <script src="scripts/validator.js"></script>
   <script src="scripts/form-validation.js"></script>
-  <script src="scripts/login.js"></script>
   <script src="scripts/listBookings.js"></script>
+  <script src="scripts/login.js"></script>
   <!-- <script src="manageBookings.js"></script> -->
 </head>
 
@@ -204,14 +204,14 @@
               <button id="historyBtn" class="btn btn-light btn-sm">Historia</button>
             </li>
               <!-- </div> -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <button id="listBookingsBtn" class="btn btn-light btn-sm">Se bokningar</button>
-            </li>
-            <li class="nav-item">
+            </li> -->
+            <li id="login" class="nav-item">
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#exampleModal">
+              <!-- <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#exampleModal">
                 Logga in
-              </button>
+              </button> -->
 
               <!-- Modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -264,28 +264,27 @@
 
     </footer>
   </div>
-//
   <script>
-    let login = {
-      email: "antenilsson87@hotmail.com",
-      password: "antenilsson87"
-    };
+    // let login = {
+    //   email: "antenilsson87@hotmail.com",
+    //   password: "antenilsson87"
+    // };
 
-    $.post("/login", login, (data, textStatus, jqxhr) => {
-      console.log("success login");
+    // $.post("/login", login, (data, textStatus, jqxhr) => {
+    //   console.log("success login");
 
-      $.get("/getallbookings", (bookings) => {
-        console.log(bookings);
-      }).fail((error) => {
-        console.log(error);
-      });
+    //   $.get("/getallbookings", (bookings) => {
+    //     console.log(bookings);
+    //   }).fail((error) => {
+    //     console.log(error);
+    //   });
 
-      // $.get("/getLoggedInStatus", (response) => {
-      //   console.log(response);
-      // });
-    }).fail((error) => {
-      console.log("fail login");
-    });
+    //   $.get("/getLoggedInStatus", (response) => {
+    //     console.log(response);
+    //   });
+    // }).fail((error) => {
+    //   console.log("fail login");
+    // });
 
 
 
