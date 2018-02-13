@@ -41,3 +41,21 @@
 .no-border-table{
     border:none;
 }
+
+footer{
+    font-size: 80%;
+    font-family: serif;
+}
+
+footer .row{
+    /* padding-top: 10px; */
+    border-top: solid;
+    border-width: thin;
+    margin-top: 10px;
+}
+
+footer .border-right{
+    margin-top: 10px;
+    border-right-width: thin !important;
+    border-right: solid;
+}
