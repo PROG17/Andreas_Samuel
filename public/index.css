@@ -54,8 +54,11 @@ footer .row{
     margin-top: 10px;
 }
 
-footer .border-right{
+footer .col{
     margin-top: 10px;
+}
+
+footer .border-right{
     border-right-width: thin !important;
     border-right: solid;
 }

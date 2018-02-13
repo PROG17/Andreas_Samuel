@@ -54,7 +54,7 @@ exports.makeBooking = (req, res) => {
         let booking = new Booking(req.body.dates, req.body.toPay, req.body.firstName,
             req.body.lastName, req.body.personalIdentityNumber,
             req.body.streetAddress, req.body.zipCode, req.body.postTown,
-            req.body.phoneNumber, req.body.email, req.body.bookingDate);
+            req.body.phoneNumber, req.body.email, req.body.bookingDate, req.body.needClean);
 
         bookingManager.MakeBooking(booking);
 

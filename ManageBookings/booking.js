@@ -1,6 +1,6 @@
 module.exports = class Booking {
     constructor(dates, toPay, firstName, lastName,
-        personalIdentityNumber, streetAddress, zipCode, postTown, phoneNumber, email, bookingDate) {
+        personalIdentityNumber, streetAddress, zipCode, postTown, phoneNumber, email, bookingDate, needClean) {
 
         this.dates = dates;
         this.toPay = toPay;
@@ -13,5 +13,6 @@ module.exports = class Booking {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.bookingDate = bookingDate;
+        this.needClean = needClean;
     }
 }
