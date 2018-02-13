@@ -49,7 +49,7 @@ function checkIfLoggedIn() {
 
                 $("#logoff-btn").click(function () {
                     $.get("/logout", (response) => {
-                        // Logga ut på servern och uppdatera nav
+                        $("#sundreSkola").trigger("click");
                         checkIfLoggedIn();
                         console.log(response);
                     }).fail((error) => {

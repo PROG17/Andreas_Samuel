@@ -73,7 +73,8 @@ $("#saveBookingBtn").click(function () {
         console.log(data);
         console.log(textStatus);
         $("form").trigger("reset");
-        alert("Din bokning är registrerad");
+        alert(
+            "Din bokning är registrerad!\nEtt bekräftelsemail kommer att skickas till dig inom 1-3 dagar. Där kommer du att få all info du behöver för att betala bokningen och hur du tillträder (nyckel etc).");
     }).fail((error) => {
         //fail
         FormValidation.validateAll();
