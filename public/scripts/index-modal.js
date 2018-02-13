@@ -76,6 +76,7 @@ $("#saveBookingBtn").click(function () {
         alert("Din bokning är registrerad");
     }).fail((error) => {
         //fail
+        FormValidation.validateAll();
         console.log(error.responseJSON);
     })
     .done(function(){
