@@ -1,24 +1,36 @@
 $("#sundreSkola").click((e) => {
     $.get('/sundreSkola', (data) => {
-        $("#content").html(data);
+        animateContent(data, "rotate");
     });
 });
 
 $("#includesBtn").click((e) => {
     $.get('/includes', (data) => {
-        $("#content").html(data);
+        animateContent(data, "slideFromRight");
     });
 });
 
+function animateContent(htmlContent, animateClassName) {
+    let content = $("#content");
+    let footer = $("#sectionFooter");
+    footer.addClass("hide");
+    content.removeClass().addClass("hide");
+    $("#content").html(htmlContent);
+    setTimeout(() => {
+        content.addClass(animateClassName);
+        footer.removeClass("hide");
+    }, 100);
+}
+
 $("#findUsBtn").click((e) => {
-    $.get('/findus', (data) => {
-        $("#content").html(data);
+    $.get('/findus', (data) => {       
+        animateContent(data, "slideFromDown");
     });
 });
 
 $("#historyBtn").click((e) => {
     $.get('/history', (data) => {
-        $("#content").html(data);
+        animateContent(data, "rotate");
     });
 });
 
@@ -26,8 +38,6 @@ $(".surroundingBtn").click((e) => {
     let href = e.target.getAttribute("data-href");
     let iframe = document.createElement("iframe");
     iframe.className = "IframePage";
-    // iframe.width = "900";
-    // iframe.height = "600";
     iframe.src = href;
     $("#content").empty().append(iframe);
 });

@@ -9,6 +9,7 @@
 
 #content{
     padding: 10px;
+    position: relative;
 }
 
 .image-map{
@@ -61,4 +62,55 @@ footer .col{
 footer .border-right{
     border-right-width: thin !important;
     border-right: solid;
+}
+
+.hide{
+    display: none;
+}
+
+.slideFromRight{
+    display: block !important;
+    animation-name: slideFromRightAnimation;
+    animation-duration: 0.5s;
+}
+
+.slideFromDown{
+    display: block !important;
+    animation-name: slideFromDownAnimation;
+    animation-duration: 0.5s;
+}
+
+.rotate{
+    display: block !important;
+    animation-name: rotateAnimation;
+    animation-duration: 0.5s;
+}
+
+@keyframes slideFromRightAnimation {
+    from {
+       left: 100vw;
+    }
+    to {
+        left: 0vw;
+    }
+}
+
+@keyframes slideFromDownAnimation {
+    from {
+       top: 100vh;
+       width:0%;
+    }
+    to {
+        top: 0vh;
+        width:100%;
+    }
+}
+
+@keyframes rotateAnimation {
+    from {
+        transform: rotate(180deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
 }
