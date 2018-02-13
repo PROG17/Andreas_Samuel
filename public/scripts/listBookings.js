@@ -130,7 +130,10 @@ function addListBookingsBtn() {
             tr.append(td);
 
             tr.append($(`<td>${b.toPay}</td>`));
-            tr.append($(`<td>${b.needClean}</td>`))
+
+            let cleaningDisplay = b.needClean == "true" ? "Ja" : "Nej";
+
+            tr.append($(`<td>${cleaningDisplay}</td>`))
             tr.append($(`<td>${b.bookingDate}</td>`));
 
             tbody.append(tr);

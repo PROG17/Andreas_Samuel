@@ -45,6 +45,7 @@ function checkIfLoggedIn() {
             $("#login-btn").remove();
             if (response.user.role === "admin") {
                 console.log("Admin logged in");
+                addListBookingsBtn();
                 $("#login").prepend("<button id='logoff-btn' type='button' class='btn btn-light btn-sm'>Logga ut</button>");
 
                 $("#logoff-btn").click(function () {
@@ -57,7 +58,6 @@ function checkIfLoggedIn() {
                         console.error.error;
                     });
                 });
-                addListBookingsBtn();
                 $("#login-btn").remove();
             }
         }
