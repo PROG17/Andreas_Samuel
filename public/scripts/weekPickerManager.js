@@ -69,6 +69,9 @@ class WeekPickerManager {
             let amount = $(c).val();
             sum += Number(amount);
         })
+        if ($("#cleaning").prop("checked") == true){
+            sum += 1200;
+        }
         return sum;
     }
 

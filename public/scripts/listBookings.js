@@ -66,7 +66,7 @@ function addListBookingsBtn() {
         let contentDiv = $("#content");
         let container = $("<div class='responsive-table'>")
         let headers =
-            ["Namn", "Personnr.", "Gatuadr.", "Postnr.", "Ort", "Email", "Telefon", "Vecka", "Kostnad", "Bokningsdatum"]
+            ["Namn", "Personnr.", "Gatuadr.", "Postnr.", "Ort", "Email", "Telefon", "Vecka", "Kostnad", "Städ ingår", "Bokningsdatum"]
         let table = $("<table class='table table-striped'>")
         let trHead = $("<tr>");
 
@@ -130,6 +130,7 @@ function addListBookingsBtn() {
             tr.append(td);
 
             tr.append($(`<td>${b.toPay}</td>`));
+            tr.append($(`<td>${b.needClean}</td>`))
             tr.append($(`<td>${b.bookingDate}</td>`));
 
             tbody.append(tr);

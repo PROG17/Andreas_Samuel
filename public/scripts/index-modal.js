@@ -52,6 +52,7 @@ $("#saveBookingBtn").click(function () {
     let phone = $("#phone").val();
     let email = $("#email").val();
     let bookingDate = moment().format('YYYY-MM-DD');
+    let needCleaning = $("#cleaning").prop("checked");
 
 
     let booking = {
@@ -65,7 +66,8 @@ $("#saveBookingBtn").click(function () {
         postTown: city,
         phoneNumber: phone,
         email: email,
-        bookingDate: bookingDate
+        bookingDate: bookingDate,
+        needClean: needCleaning
     };
 
     $.post("/makeBooking", booking, (data, textStatus, jqxhr) => {
@@ -111,3 +113,12 @@ function addWeekToTable(startDate, weekNumber) {
 
     $("#weeks").append(tr);
 };
+
+$("#cleaning").change(function(){
+    if ($(this).prop("checked") == true){
+        WeekPickerManager.PopulateInputWithTableSum(".week-cost", "#topay");
+    }
+    else{
+        WeekPickerManager.PopulateInputWithTableSum(".week-cost", "#topay");
+    }
+})

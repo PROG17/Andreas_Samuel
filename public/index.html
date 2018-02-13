@@ -111,13 +111,6 @@
                         </div>
 
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Att betala</label>
-                          <div class="col-sm-9">
-                            <input id="topay" class="form-control" type="text" readonly>
-                            <span class="input-validator topay-validation text-danger"></span>
-                          </div>
-                        </div>
-                        <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Förnamn</label>
                           <div class="col-sm-9">
                             <input id="firstname" class="form-control" type="text">
@@ -173,8 +166,20 @@
                             <span class="input-validator email-validation text-danger"></span>
                           </div>
                         </div>
-                        <button id="saveBookingBtn">Spara</button>
-                        <input type="reset">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Att betala</label>
+                            <div class="col-sm-9">
+                              <input id="topay" class="form-control" type="text" readonly>
+                              <span class="input-validator topay-validation text-danger"></span>
+                            </div>
+                          </div>
+                        <div class="form-check">
+                          <input id="cleaning" class="form-check-input" type="checkbox" />
+                          <label class="form-check-label">Städa åt mig (1200 kr)</label>
+                          <span class="input-validator email-validation text-danger"></span>
+                        </div>
+                        <button id="saveBookingBtn" class="btn btn-secondary">Spara</button>
+                        <input class="btn btn-warning" type="reset">
                         <div class="form-server-validation"></div>
                       </form>
                     </div>
